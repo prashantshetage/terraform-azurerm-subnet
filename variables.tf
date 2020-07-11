@@ -28,7 +28,7 @@ variable "delegation" {
     })
   }))
   description = "(Optional) One or more delegation blocks"
-  default = {}
+  default     = {}
 }
 
 variable "service_endpoints" {
@@ -50,15 +50,15 @@ variable "enforce_private_link_service_network_policies" {
 }
 
 variable "subnet_route_table_association" {
-  type = bool
+  type        = bool
   description = "(Optional) Accociate on Not the Subnet to Route Table. Route table id must be passed if set to True"
-  default =  false
+  default     = false
 }
 
 variable "network_security_group_association" {
-  type = bool
+  type        = bool
   description = "(Optional) Accociate on Not the NSG to Subnet. NSG id must be passed if set to True"
-  default =  false
+  default     = false
 }
 
 variable "subnet_prefix" {
