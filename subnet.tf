@@ -23,7 +23,7 @@ resource "azurerm_subnet" "subnet" {
 
 
 // Route table association
-resource "azurerm_subnet_route_table_association" "private" {
+resource "azurerm_subnet_route_table_association" "route_table_association" {
   for_each       = var.subnet_route_table_association ? var.subnet : {}
   subnet_id      = each.value.route_table_id != "null" ? azurerm_subnet.subnet[each.key].id : null
   route_table_id = each.value.route_table_id
