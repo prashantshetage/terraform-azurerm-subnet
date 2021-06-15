@@ -11,10 +11,12 @@ resource "azurerm_subnet" "subnet" {
 
   dynamic "delegation" {
     for_each = var.delegation
-    name     = delegation.value.name
-    service_delegation {
-      name    = delegation.service_delegation.name
-      actions = delegation.service_delegation.actions
+    content {
+      name = delegation.value.name
+      service_delegation {
+        name    = delegation.service_delegation.name
+        actions = delegation.service_delegation.actions
+      }
     }
   }
 
