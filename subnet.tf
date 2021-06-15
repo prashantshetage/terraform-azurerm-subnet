@@ -9,6 +9,15 @@ resource "azurerm_subnet" "subnet" {
   enforce_private_link_endpoint_network_policies = var.enforce_private_link_endpoint_network_policies
   enforce_private_link_service_network_policies  = var.enforce_private_link_service_network_policies
 
+  dynamic "delegation" {
+    for_each = var.delegation
+    name     = delegation.value.name
+    service_delegation {
+      name    = delegation.service_delegation.name
+      actions = delegation.service_delegation.actions
+    }
+  }
+
   depends_on = [var.it_depends_on]
 
   lifecycle {
