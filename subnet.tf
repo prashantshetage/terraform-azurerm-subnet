@@ -14,8 +14,8 @@ resource "azurerm_subnet" "subnet" {
     content {
       name = delegation.value.name
       service_delegation {
-        name    = delegation.service_delegation.name
-        actions = delegation.service_delegation.actions
+        name    = delegation.service_delegation.value.name
+        actions = delegation.service_delegation.value.actions
       }
     }
   }
