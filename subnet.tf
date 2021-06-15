@@ -14,10 +14,17 @@ resource "azurerm_subnet" "subnet" {
     content {
       name = delegation.value.name
       service_delegation {
-        name    = delegation.service_delegation.value.name
-        actions = delegation.service_delegation.value.actions
+        name    = delegation.value.service_delegation.name
+        actions = delegation.value.service_delegation.actions
       }
     }
+    /* dynamic "service_delegation" {
+        for_each = var.delegation.value[*]
+        content {
+        name    = service_delegation.value.name
+        actions = service_delegation.value.actions
+        }
+      } */
   }
 
   depends_on = [var.it_depends_on]
